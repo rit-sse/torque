@@ -3,18 +3,21 @@
   <script>
     Polymer('torque-slides', {
       ready: function(){
-        var list = this.querySelectorAll('torque-slide');
-        for(var i = 1; i < list.length; i++) {
-          list[i].hidden = true;
-        }
-        this.current = 0;
         var self = this;
-        setInterval(function() {
-          self.current = (self.current + 1) % self.querySelectorAll('torque-slide').length;
-        }, parseInt(this.duration)*1000);
+        window.addEventListener('polymer-ready', function(e) {
+          var list = self.querySelectorAll('/deep/ torque-slide');
+          for(var i = 1; i < list.length; i++) {
+            list[i].hidden = true;
+          }
+          self.current = 0;
+
+          setInterval(function() {
+            self.current = (self.current + 1) % self.querySelectorAll('/deep/ torque-slide').length;
+          }, parseInt(self.duration)*1000);
+        });
       },
       currentChanged: function(oldValue, newValue) {
-        var list = this.querySelectorAll('torque-slide');
+        var list = this.querySelectorAll('/deep/ torque-slide');
         if(oldValue !== undefined) {
           list[oldValue].hidden = true;
         }
