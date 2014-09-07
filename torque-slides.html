@@ -1,0 +1,21 @@
+<link rel="import" href="../polymer/polymer.html">
+<polymer-element name='torque-slides' attributes='duration current'>
+  <script>
+    Polymer('torque-slides', {
+      ready: function(){
+        for(var i = 1; i < this.children.length; i++) {
+          this.children[i].hidden = true;
+        }
+        this.current = 0;
+        var self = this;
+        setInterval(function() {
+          self.current = (self.current + 1) % self.children.length;
+        }, parseInt(this.duration)*1000);
+      },
+      currentChanged: function(oldValue, newValue) {
+        this.children[oldValue].hidden = true;
+        this.children[newValue].hidden = false;
+      }
+    });
+  </script>
+</polymer-element>
