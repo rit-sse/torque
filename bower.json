@@ -1,0 +1,7 @@
+{
+  "name": "torque-demo",
+  "private": true,
+  "dependencies": {
+    "torque": "rit-sse/torque"
+  }
+}
