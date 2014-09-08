@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
-<polymer-element name='torque-slides' attributes='duration current'>
+<link rel="import" href="torque-slide.html">
+<polymer-element name='torque-slides' attributes='duration current countdown'>
   <script>
     Polymer('torque-slides', {
       ready: function(){
@@ -10,10 +11,9 @@
             list[i].hidden = true;
           }
           self.current = 0;
+          self.countdown = list[0].duration || self.duration;
 
-          setInterval(function() {
-            self.current = (self.current + 1) % self.querySelectorAll('/deep/ torque-slide').length;
-          }, parseInt(self.duration)*1000);
+          setInterval(function(){ self.updateSlide(); }, 1000);
         });
       },
       currentChanged: function(oldValue, newValue) {
@@ -22,6 +22,16 @@
           list[oldValue].hidden = true;
         }
         list[newValue].hidden = false;
+      },
+      updateSlide: function() {
+        if(this.countdown === 0){
+          var list = this.querySelectorAll('/deep/ torque-slide');
+          this.current = (this.current + 1) % list.length;
+          var current = list[this.current];
+          this.countdown = current.duration || this.duration;
+        } else {
+          this.countdown -= 1;
+        }
       }
     });
   </script>
