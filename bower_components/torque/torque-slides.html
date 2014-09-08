@@ -1,0 +1,38 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="torque-slide.html">
+<polymer-element name='torque-slides' attributes='duration current countdown'>
+  <script>
+    Polymer('torque-slides', {
+      ready: function(){
+        var self = this;
+        window.addEventListener('polymer-ready', function(e) {
+          var list = self.querySelectorAll('/deep/ torque-slide');
+          for(var i = 1; i < list.length; i++) {
+            list[i].hidden = true;
+          }
+          self.current = 0;
+          self.countdown = list[0].duration || self.duration;
+
+          setInterval(function(){ self.updateSlide(); }, 1000);
+        });
+      },
+      currentChanged: function(oldValue, newValue) {
+        var list = this.querySelectorAll('/deep/ torque-slide');
+        if(oldValue !== undefined) {
+          list[oldValue].hidden = true;
+        }
+        list[newValue].hidden = false;
+      },
+      updateSlide: function() {
+        if(this.countdown === 0){
+          var list = this.querySelectorAll('/deep/ torque-slide');
+          this.current = (this.current + 1) % list.length;
+          var current = list[this.current];
+          this.countdown = current.duration || this.duration;
+        } else {
+          this.countdown -= 1;
+        }
+      }
+    });
+  </script>
+</polymer-element>
