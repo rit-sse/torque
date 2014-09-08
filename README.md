@@ -19,7 +19,7 @@ Import the
 
 And you should be ready to go
 
-### Example
+### [Example](http://rit-sse.github.io/torque/)
 ```html
 <torque-slides duration="1">
   <torque-slide duration="6">
