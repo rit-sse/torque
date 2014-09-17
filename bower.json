@@ -6,7 +6,7 @@
     "kristenmills <kristen@kristen-mills.com>"
   ],
   "description": "A polymer based automated slide show.",
-  "main": "torque.html",
+  "main": ["torque-slides.html", "torque-slide.html"],
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -17,5 +17,10 @@
   ],
   "dependencies": {
     "polymer": "~0.4.0"
-  }
+  },
+  "keywords": [
+    "polymer",
+    "slides",
+    "slideshow"
+  ]
 }
