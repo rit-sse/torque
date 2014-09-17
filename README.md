@@ -8,7 +8,7 @@ A polymer based automated slide show.
 In you project directory run
 
 ```
-bower install --save rit-sse/torque
+bower install --save torque
 ```
 
 Import the
