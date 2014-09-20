@@ -6,7 +6,7 @@
       ready: function(){
         var self = this;
         window.addEventListener('polymer-ready', function(e) {
-          var list = self.querySelectorAll('/deep/ torque-slide');
+          var list = self.querySelectorAll('torque-slides /deep/ torque-slide');
           for(var i = 1; i < list.length; i++) {
             list[i].hidden = true;
           }
@@ -17,7 +17,7 @@
         });
       },
       currentChanged: function(oldValue, newValue) {
-        var list = this.querySelectorAll('/deep/ torque-slide');
+        var list = this.querySelectorAll('torque-slides /deep/ torque-slide');
         if(oldValue !== undefined) {
           list[oldValue].hidden = true;
         }
@@ -25,7 +25,7 @@
       },
       updateSlide: function() {
         if(this.countdown === 0){
-          var list = this.querySelectorAll('/deep/ torque-slide');
+          var list = this.querySelectorAll('torque-slides /deep/ torque-slide');
           this.current = (this.current + 1) % list.length;
           var current = list[this.current];
           this.countdown = current.duration || this.duration;

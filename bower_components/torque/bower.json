@@ -1,12 +1,12 @@
 {
   "name": "torque",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/rit-sse/torque",
   "authors": [
     "kristenmills <kristen@kristen-mills.com>"
   ],
   "description": "A polymer based automated slide show.",
-  "main": "torque.html",
+  "main": ["torque-slides.html", "torque-slide.html"],
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -17,5 +17,10 @@
   ],
   "dependencies": {
     "polymer": "~0.4.0"
-  }
+  },
+  "keywords": [
+    "polymer",
+    "slides",
+    "slideshow"
+  ]
 }
