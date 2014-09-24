@@ -1,5 +1,6 @@
 {
   "name": "torque",
+  "version": "0.1.1",
   "homepage": "https://github.com/rit-sse/torque",
   "authors": [
     "kristenmills <kristen@kristen-mills.com>"
@@ -25,13 +26,13 @@
     "slides",
     "slideshow"
   ],
-  "_release": "f2ab43566f",
+  "_release": "0.1.1",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "f2ab43566fcb35bb9498b99eeb9725c529ab2e2b"
+    "type": "version",
+    "tag": "v0.1.1",
+    "commit": "186b4e5cd5482c2d3e1c0ad965e5abc665211246"
   },
   "_source": "git://github.com/rit-sse/torque.git",
-  "_target": "master",
+  "_target": "0.1.1",
   "_originalSource": "torque"
 }

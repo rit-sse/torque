@@ -1,6 +1,9 @@
 torque
 ======
 
+[![Bower version](https://badge.fury.io/bo/torque.svg)](http://badge.fury.io/bo/torque)
+[![Dependency Status](https://gemnasium.com/rit-sse/torque.svg)](https://gemnasium.com/rit-sse/torque)
+
 A polymer based automated slide show.
 
 ## Usage
