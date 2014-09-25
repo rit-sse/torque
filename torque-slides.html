@@ -1,9 +1,20 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="torque-slide.html">
-<polymer-element name='torque-slides' attributes='duration current countdown auto'>
+<link rel="import" href=" bower_components/paper-progress/paper-progress.html">
+<polymer-element name='torque-slides' attributes='duration current countdown auto progress'>
+  <template>
+    <div vertical layout style="min-height: 100vh">
+      <div flex class="flex-content">
+        <shadow ></shadow>
+      </div>
+      <paper-progress style="width: 100%" min="0" max="{{list.length -1}}" value="{{counter}}" hidden?="{{!(progress && !auto)}}"></paper-progress>
+      <paper-progress style="width: 100%" min="0" max="{{list[current].duration || duration}}" value="{{(list[current].duration || duration) - countdown}}" hidden?="{{!(progress && auto)}}"></paper-progress>
+    </div>
+  </template>
   <script>
     Polymer('torque-slides', {
       auto: false,
+      progress: false,
       ready: function(){
         var self = this;
         window.addEventListener('polymer-ready', function(e) {
@@ -27,10 +38,13 @@
         });
       },
       currentChanged: function(oldValue, newValue) {
+        this.counter = this.current;
         if(oldValue !== undefined) {
           this.list[oldValue].hidden = true;
         }
-        this.list[newValue].hidden = false;
+        if(newValue !== undefined) {
+          this.list[newValue].hidden = false;
+        }
       },
       updateSlide: function() {
         if(this.countdown === 0){
@@ -42,7 +56,7 @@
         }
       },
       next: function() {
-        if(this.current !== this.list.length -1) {
+        if(this.current !== this.list.length - 1) {
           this.current += 1;
         }
       },
