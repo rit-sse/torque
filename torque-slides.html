@@ -1,8 +1,9 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="torque-slide.html">
-<polymer-element name='torque-slides' attributes='duration current countdown'>
+<polymer-element name='torque-slides' attributes='duration current countdown auto'>
   <script>
     Polymer('torque-slides', {
+      auto: false,
       ready: function(){
         var self = this;
         window.addEventListener('polymer-ready', function(e) {
@@ -13,7 +14,16 @@
           self.current = 0;
           self.countdown = self.list[0].duration || self.duration;
 
-          setInterval(function(){ self.updateSlide(); }, 1000);
+          if(self.auto) {
+            setInterval(function(){ self.updateSlide(); }, 1000);
+          } else  {
+            document.addEventListener('keydown', function(e) {
+              switch(event.keyCode) {
+                case 37: self.prev(); break;
+                case 39: self.next(); break;
+              }
+            });
+          }
         });
       },
       currentChanged: function(oldValue, newValue) {
@@ -29,6 +39,16 @@
           this.countdown = current.duration || this.duration;
         } else {
           this.countdown -= 1;
+        }
+      },
+      next: function() {
+        if(this.current !== this.list.length -1) {
+          this.current += 1;
+        }
+      },
+      prev: function() {
+        if(this.current !== 0) {
+          this.current -= 1;
         }
       }
     });
