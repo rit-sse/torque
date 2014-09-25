@@ -4,8 +4,10 @@
     Polymer('torque-slide', {
       attributeChanged: function(name, oldValue, newValue) {
         if(name === 'hidden' && newValue === null) {
-          [].forEach.call(this.children, function(el, i) {
-            el.fire('no-longer-hidden');
+          [].forEach.call(this.children, function(el) {
+            if(el.fire){
+              el.fire('no-longer-hidden');
+            }
           });
         }
       }
