@@ -1,36 +1,40 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="torque-slide.html">
-<polymer-element name='torque-slides' attributes='duration current countdown'>
-  <script>
-    Polymer('torque-slides', {
-      ready: function(){
-        var self = this;
-        window.addEventListener('polymer-ready', function(e) {
-          self.list = self.querySelectorAll('torque-slides /deep/ torque-slide');
-          for(var i = 1; i < self.list.length; i++) {
-            self.list[i].hidden = true;
-          }
-          self.current = 0;
-          self.countdown = self.list[0].duration || self.duration;
+<script>
+  Polymer({
+    is: 'torque-slides',
+    properties: {
+      duration:  { type: Number },
+      current:   { type: Number, observer: 'currentChanged' },
+      countdown: { type: Number }
+    },
+    ready: function(){
+      var self = this;
+      window.addEventListener('WebComponentsReady', function(e) {
+        self.list = self.querySelectorAll('torque-slides /deep/ torque-slide');
+        for(var i = 1; i < self.list.length; i++) {
+          self.list[i].hidden = true;
+        }
+        self.current = 0;
+        self.countdown = self.list[0].getAttribute('duration') || self.duration;
 
-          setInterval(function(){ self.updateSlide(); }, 1000);
-        });
-      },
-      currentChanged: function(oldValue, newValue) {
-        if(oldValue !== undefined) {
-          this.list[oldValue].hidden = true;
-        }
-        this.list[newValue].hidden = false;
-      },
-      updateSlide: function() {
-        if(this.countdown === 0){
-          this.current = (this.current + 1) % this.list.length;
-          var current = this.list[this.current];
-          this.countdown = current.duration || this.duration;
-        } else {
-          this.countdown -= 1;
-        }
+        setInterval(function(){ self.updateSlide(); }, 1000);
+      });
+    },
+    currentChanged: function(newValue, oldValue) {
+      if(oldValue !== undefined) {
+        this.list[oldValue].hidden = true;
       }
-    });
-  </script>
-</polymer-element>
+      this.list[newValue].hidden = false;
+    },
+    updateSlide: function() {
+      if(this.countdown === 0){
+        this.current = (this.current + 1) % this.list.length;
+        var current = this.list[this.current];
+        this.countdown = current.getAttribute('duration') || this.duration;
+      } else {
+        this.countdown -= 1;
+      }
+    }
+  });
+</script>
