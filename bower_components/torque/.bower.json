@@ -1,6 +1,5 @@
 {
   "name": "torque",
-  "version": "0.1.1",
   "homepage": "https://github.com/rit-sse/torque",
   "authors": [
     "kristenmills <kristen@kristen-mills.com>"
@@ -19,20 +18,20 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~0.4.0"
+    "polymer": "~1.0.3"
   },
   "keywords": [
     "polymer",
     "slides",
     "slideshow"
   ],
-  "_release": "0.1.1",
+  "_release": "cda5c4aac9",
   "_resolution": {
-    "type": "version",
-    "tag": "v0.1.1",
-    "commit": "186b4e5cd5482c2d3e1c0ad965e5abc665211246"
+    "type": "branch",
+    "branch": "polymer-1.0",
+    "commit": "cda5c4aac9f187e9e60f9d5758497fcfdbabcd01"
   },
   "_source": "git://github.com/rit-sse/torque.git",
-  "_target": "0.1.1",
-  "_originalSource": "torque"
+  "_target": "polymer-1.0",
+  "_originalSource": "rit-sse/torque"
 }

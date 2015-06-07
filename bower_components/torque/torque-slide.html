@@ -1,14 +1,16 @@
 <link rel="import" href="../polymer/polymer.html">
-<polymer-element name='torque-slide' attributes='duration'>
-  <script>
-    Polymer('torque-slide', {
-      attributeChanged: function(name, oldValue, newValue) {
-        if(name === 'hidden' && newValue === null) {
-          [].forEach.call(this.children, function(el, i) {
-            el.fire('no-longer-hidden');
-          });
-        }
+<script>
+  Polymer({
+    is: 'torque-slide',
+    attributes: {
+      duration: { type: Number }
+    },
+    attributeChanged: function(name) {
+      if(name === 'hidden' && this.getAttribute(name) === null) {
+        [].forEach.call(this.children, function(el, i) {
+          el.fire('no-longer-hidden');
+        });
       }
-    })
-  </script>
-</polymer-element>
+    }
+  })
+</script>
