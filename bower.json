@@ -2,6 +2,6 @@
   "name": "torque-demo",
   "private": true,
   "dependencies": {
-    "torque": "0.1.1"
+    "torque": "rit-sse/torque#master"
   }
 }
